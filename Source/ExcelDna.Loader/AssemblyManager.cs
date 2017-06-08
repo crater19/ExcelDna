@@ -106,7 +106,8 @@ namespace ExcelDna.Loader
 			{
 				loadedAssembly = Assembly.Load(assemblyBytes);
                 Logger.Initialization.Info("Assembly Loaded from bytes. FullName: {0}", loadedAssembly.FullName);
-				loadedAssemblies.Add(name, loadedAssembly);
+				if(!loadedAssemblies.ContainsKey(name))
+				  loadedAssemblies.Add(name, loadedAssembly);
 				return loadedAssembly;
 			}
 			catch (Exception e)
